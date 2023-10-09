@@ -36,3 +36,5 @@ Below you can find the docs for each tehnology that is used in this app:
 [10]: https://firebase.google.com/docs/android/setup
 [11]: https://www.youtube.com/watch?v=w5qCmvS9JGE
 [12]: https://ahmad-efati.medium.com/modularization-of-android-applications-based-on-clean-architecture-18dc643e0562
+
+In the registration form all the fields are validated, email with regexp pattern and password you must include a capitalize letter and a minuscula
