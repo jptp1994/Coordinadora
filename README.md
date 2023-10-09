@@ -24,8 +24,6 @@ Below you can find the docs for each tehnology that is used in this app:
 ## Other Android Components:
 * [Modular proyect with clean architecture][12]
 
-* This is not an officially supported Google product.
-
 [1]: https://kotlinlang.org/
 [2]: https://firebase.google.com/docs/firestore
 [3]: https://developer.android.com/topic/libraries/architecture
