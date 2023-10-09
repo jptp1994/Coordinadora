@@ -19,7 +19,7 @@ Below you can find the docs for each tehnology that is used in this app:
 
 ## Gradle DSL
 
-[Dynamic adding components libraries][11]
+* [Dynamic adding components libraries][11]
 
 ## Other Android Components:
 * Modular proyect with clean architecture
