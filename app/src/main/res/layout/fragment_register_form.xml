@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="clickHandler"
+            type="com.bankingapp.test.ui.register.listener.RegisterFormListener" />
+        <variable
+            name="viewModel"
+            type="com.bankingapp.test.ui.register.viewmodel.RegisterViewModel" />
+        <variable
+            name="toolbarListener"
+            type="com.bankingapp.test.ui.toolbar.ToolbarFunctions" />
+        <variable
+            name="titleToolbar"
+            type="String" />
+    </data>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_screen">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:titleToolbar="@{titleToolbar}"
+        app:toolbarListener="@{toolbarListener}" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/materialCardView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/margin_size"
+        app:cardCornerRadius="@dimen/card_radius"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_size"
+                    android:layout_marginTop="@dimen/margin_size"
+                    android:drawablePadding="@dimen/drawable_padding"
+                    android:text="@string/name"
+                    style="@style/register_form_tv"
+                    app:drawableStartCompat="@drawable/ic_user_name"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <!--modifiy the hint of field -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/ti_name"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_size"
+                    android:layout_marginEnd="@dimen/margin_size"
+                    android:hint="@string/hint_user"
+                    android:textColorHint="@color/secondary"
+                    app:errorEnabled="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_name">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/ed_name"
+                        android:layout_width="match_parent"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                        android:layout_height="wrap_content"
+                        android:text="@{viewModel.firstName}"
+                        style="@style/edit_text_register"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <TextView
+                    android:id="@+id/tv_lastName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_size"
+                    android:layout_marginTop="@dimen/margin_size"
+                    android:drawablePadding="@dimen/drawable_padding"
+                    android:text="@string/last_name"
+                    style="@style/register_form_tv"
+                    app:drawableStartCompat="@drawable/ic_user_name"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ti_name" />
+
+
+                <!--modifiy the hint of field -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/ti_lastName"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_size"
+                    android:layout_marginEnd="@dimen/margin_size"
+                    android:hint="@string/hint_last_name"
+                    android:textColorHint="@color/secondary"
+                    app:errorEnabled="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_lastName">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/ed_lastName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/edit_text_register"
+                        android:inputType="textEmailAddress"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                        android:text="@{viewModel.lastName}"
+                         />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <TextView
+                    android:id="@+id/tv_age"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_size"
+                    android:layout_marginTop="@dimen/margin_size"
+                    android:drawablePadding="@dimen/drawable_padding"
+                    android:text="@string/age"
+                    style="@style/register_form_tv"
+                    app:drawableStartCompat="@drawable/ic_user"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ti_lastName" />
+
+
+                <!--modifiy the hint of field -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/ti_age"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_size"
+                    android:layout_marginEnd="@dimen/margin_size"
+                    android:hint="@string/age"
+                    android:textColorHint="@color/secondary"
+                    app:errorEnabled="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_age">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/ed_age"
+                        android:text="@{viewModel.age}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        style="@style/edit_text_register"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <TextView
+                    android:id="@+id/tv_dateBirth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_size"
+                    android:layout_marginTop="@dimen/margin_size"
+                    android:drawablePadding="@dimen/drawable_padding"
+                    android:text="@string/date_birth"
+                    style="@style/register_form_tv"
+                    app:drawableStartCompat="@drawable/ic_date"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ti_age" />
+
+
+                <!--modifiy the hint of field -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/ti_dateBirth"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_size"
+                    android:layout_marginEnd="@dimen/margin_size"
+                    android:hint="@string/hint_pin_login"
+                    android:textColorHint="@color/secondary"
+                    app:errorEnabled="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_dateBirth">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/ed_dateBirth"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:focusable="false"
+                        android:onClick="@{(v)-> clickHandler.clickOpenCalendar()}"
+                        android:inputType="none"
+                        style="@style/edit_text_register"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+
+                <TextView
+                    android:id="@+id/tv_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_size"
+                    android:layout_marginTop="@dimen/margin_size"
+                    android:drawablePadding="@dimen/drawable_padding"
+                    android:text="@string/userName"
+                    style="@style/register_form_tv"
+                    app:drawableStartCompat="@drawable/ic_user"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ti_dateBirth" />
+
+
+                <!--modifiy the hint of field -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/ti_email"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_size"
+                    android:layout_marginEnd="@dimen/margin_size"
+                    android:hint="@string/hint_email"
+                    android:textColorHint="@color/secondary"
+                    app:errorEnabled="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_email">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/ed_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textEmailAddress"
+                        android:text="@{viewModel.email}"
+                        style="@style/edit_text_register" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/tv_current_password"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_size"
+                    android:layout_marginTop="@dimen/margin_size"
+                    android:drawablePadding="@dimen/drawable_padding"
+                    android:text="@string/pin"
+                    style="@style/register_form_tv"
+                    app:drawableStartCompat="@drawable/ic_lock"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ti_email" />
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/ti_password"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_size"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="@dimen/margin_size"
+                    android:background="@android:color/transparent"
+                    android:hint="@string/hint_password"
+                    android:textColorHint="@color/secondary"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_current_password">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/ed_current_password"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPassword"
+                        android:text="@{viewModel.password}"
+                        style="@style/edit_text_register"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Button
+                    android:id="@+id/register_form_button"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_size"
+                    android:layout_marginTop="@dimen/margin_size_extra"
+                    android:layout_marginEnd="@dimen/margin_size"
+                    android:layout_marginBottom="@dimen/margin_size_extra"
+                    android:backgroundTint="@color/secondary_variant"
+                    android:onClick="@{(v)-> clickHandler.clickAcceptButton()}"
+                    android:text="@string/register"
+                    android:textAllCaps="false"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ti_password" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+    </com.google.android.material.card.MaterialCardView>
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

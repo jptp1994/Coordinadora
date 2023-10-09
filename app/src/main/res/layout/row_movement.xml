@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+<data>
+    <import
+        alias="ExtensionFunctionsDate"
+        type="com.bankingapp.test.utils.extensionsfunctions.DateFunctionsKt" />
+
+    <import
+        alias="ExtensionsFunctionsDouble"
+        type="com.bankingapp.test.utils.extensionsfunctions.DoubleExtensionsKt" />
+
+    <variable
+        name="movement"
+        type="com.bankingapp.test.ui.movements.model.Movement" />
+</data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/iv_type_movement"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            app:imageUrl="@{movement.typeMovementImage}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/ic_close_session" />
+
+        <TextView
+            android:id="@+id/tv_concept"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_size"
+            android:layout_marginEnd="@dimen/margin_size"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:text="@{movement.concept}"
+            app:layout_constraintEnd_toStartOf="@+id/tv_amount"
+            app:layout_constraintStart_toEndOf="@+id/iv_type_movement"
+            app:layout_constraintTop_toTopOf="@+id/iv_type_movement"
+            tools:text="Transferencia" />
+
+        <TextView
+            android:id="@+id/tv_date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_size"
+            android:layout_marginEnd="@dimen/margin_size"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:text="@{ExtensionFunctionsDate.convertFormatDate(movement.dateCreated)}"
+            app:layout_constraintEnd_toEndOf="@+id/tv_concept"
+            app:layout_constraintStart_toEndOf="@+id/iv_type_movement"
+            app:layout_constraintTop_toBottomOf="@+id/tv_concept"
+            tools:text="12-Dic-2022" />
+
+
+        <TextView
+            android:id="@+id/tv_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{ExtensionsFunctionsDouble.formatAmount(movement.amount)}"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/iv_type_movement"
+            tools:text="$400.80" />
+
+        <TextView
+            android:id="@+id/tv_hour"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{ExtensionFunctionsDate.convertFormatHour(movement.dateCreated)}"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_concept"
+            tools:text="3:24 PM" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

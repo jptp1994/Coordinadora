@@ -1,0 +1,77 @@
+<resources>
+    <!-- General Strings-->
+    <string name="app_name">Banking App</string>
+    <string name="app_title">Story Test</string>
+
+    <!--Navigation Labels -->
+    <string name="home_fragment">Home Fragment</string>
+    <string name="movement_fragment">Movement Fragment</string>
+    <string name="register_fragment">Register Fragment</string>
+    <string name="register_photo_fragment">Register Photo Fragment</string>
+
+    <!--Login Screen -->
+    <string name="userName">User Name</string>
+    <string name="pin">Pin</string>
+    <string name="stori_icon">Stori Icon</string>
+    <string name="register">Register Form</string>
+    <string name="login_button">Login</string>
+    <string name="register_button">Don\'t Have An Account? Click Here</string>
+
+    <!-- Register Form Screen -->
+    <string name="name">Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="age">Age</string>
+    <string name="date_birth">Date of Birth</string>
+
+    <!--Toolbar -->
+    <string name="content_back">Back</string>
+    <string name="last_connection_text"><b>Last Connection:</b> %s</string>
+
+    <!--Hints-->
+    <string name="hint_user_name_login">test.com</string>
+    <string name="hint_pin_login">Type Your Pin</string>
+    <string name="hint_user">name of user</string>
+    <string name="hint_last_name">Last Name</string>
+    <string name="hint_email">test.com</string>
+    <string name="hint_password">Type Your Pin</string>
+
+    <!--Title for toolbar-->
+    <string name="title_toolbar_movement">Movement</string>
+    <string name="title_toolbar_register_form">Register Form\n</string>
+    <string name="title_toolbar_register_photo">Register Photo\n</string>
+
+    <!--Movement Screen -->
+    <string name="amount_text"><b>Amount:</b> %s</string>
+    <string name="bank_number_text"><b>Account:</b> %s</string>
+    <string name="date_text"><b>Date:</b> %s</string>
+    <string name="concept_text"><b>Concept:</b> %s</string>
+    <string name="type_account"><b>Type Account:</b></string>
+    <string name="type_movement"><b>Type Movement:</b></string>
+    <string name="details_movement">Details Movement</string>
+
+    <!--Content Description -->
+    <string name="cd_company">Company Bank</string>
+    <string name="cd_type_account">Type Account</string>
+    <string name="cd_type_movement">Type Movement</string>
+
+    <!--Register Photo Screen -->
+    <string name="add_photo">Add Photo</string>
+    <string name="tv_add_photo_register">Add Photo</string>
+    <string name="photo_title_dialog">Select Photo</string>
+    <string name="photo_subtitle_dialog">You can select which mode you want to set the photo</string>
+    <string name="take_photo">Take Photo</string>
+    <string name="photo_gallery">Get from Gallery</string>
+    <string name="rejected_permission_camera">The permission of camera has been negated please go to settings and activate manual</string>
+    <string name="rejected_permission_storage">The permission of the storage has been negated please go to settings and activate manual</string>
+    <string name="title_register_photo">You Must Upload a Photo to finish the register</string>
+
+    <!--Home Screen-->
+    <string name="transactions_details">Transactions Details</string>
+    <string name="total_balance">Total Balance</string>
+
+    <!--Error Messages-->
+    <string name="no_movements_error">No movements available</string>
+    <string name="credentials_incorrect">Credentials Incorrect</string>
+
+
+</resources>

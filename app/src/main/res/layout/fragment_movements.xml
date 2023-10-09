@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import
+            alias="ExtensionFunctionsString"
+            type="com.bankingapp.test.utils.extensionsfunctions.StringFunctionsKt" />
+        <import
+            alias="ExtensionFunctionsDate"
+            type="com.bankingapp.test.utils.extensionsfunctions.DateFunctionsKt" />
+        <import
+            alias="ExtensionFunctionsDouble"
+            type="com.bankingapp.test.utils.extensionsfunctions.DoubleExtensionsKt" />
+        <variable
+            name="toolbarListener"
+            type="com.bankingapp.test.ui.toolbar.ToolbarFunctions" />
+
+        <variable
+            name="movement"
+            type="com.bankingapp.test.ui.movements.model.Movement" />
+
+        <variable
+            name="userBanking"
+            type="com.bankingapp.test.ui.home.model.UserBanking" />
+
+        <variable
+            name="titleToolbar"
+            type="String" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background_screen">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:titleToolbar="@{titleToolbar}"
+            app:toolbarListener="@{toolbarListener}" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/materialCardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_size"
+            app:cardCornerRadius="@dimen/card_radius"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_size"
+                    android:layout_marginTop="@dimen/margin_size"
+                    android:layout_marginEnd="@dimen/margin_size"
+                    android:text="@string/details_movement"
+                    android:textSize="@dimen/title_movement"
+                    style="@style/title_tv"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/iv_company_bank"
+                    android:layout_width="@dimen/company_size"
+                    android:layout_height="@dimen/company_size"
+                    android:layout_marginTop="@dimen/margin_size_extra"
+                    app:imageUrl="@{userBanking.imageBrand}"
+                    android:contentDescription="@string/cd_company"
+                    tools:src="@drawable/ic_master_card"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+                <TextView
+                    android:id="@+id/tv_number_account"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_size"
+                    android:text= "@{@string/bank_number_text(ExtensionFunctionsString.hideCharacters(userBanking.bankNumber))}"
+                    style="@style/regular_tv"
+                    android:textSize="@dimen/movement_size"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_company_bank"
+                    tools:text="******1234" />
+
+                <TextView
+                    android:id="@+id/tv_amount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="@{@string/amount_text(ExtensionFunctionsDouble.formatAmount(movement.amount))}"
+                    style="@style/regular_tv"
+                    android:textSize="@dimen/movement_size"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_number_account"
+                    tools:text="Amount: $20000.00" />
+
+                <TextView
+                    android:id="@+id/tv_date_transaction"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_size"
+                    android:text= "@{@string/date_text(ExtensionFunctionsDate.convertFormatFull(movement.dateCreated))}"
+                    style="@style/regular_tv"
+                    android:textSize="@dimen/movement_size"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_amount"
+                    tools:text="Date: 20-Dic-2023 10:20PM" />
+
+                <TextView
+                    android:id="@+id/tv_concept"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_size"
+                    android:text= "@{@string/date_text(movement.concept)}"
+                    style="@style/regular_tv"
+                    android:textSize="@dimen/movement_size"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_date_transaction"
+                    tools:text="Concept: Payment of Water" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_type_account"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_size"
+                    android:layout_marginTop="@dimen/margin_size"
+                    android:layout_marginBottom="@dimen/margin_size"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_concept">
+
+                    <TextView
+                        android:id="@+id/tv_title_type_account"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/type_account"
+                        style="@style/regular_tv"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/iv_type_account"
+                        android:layout_width="@dimen/logo_regular"
+                        android:layout_height="@dimen/logo_regular"
+                        android:contentDescription="@string/cd_type_account"
+                        android:layout_marginTop="@dimen/margin_size"
+                        tools:src="@drawable/ic_savings_acount"
+                        app:imageUrl="@{userBanking.typeAccountImage}"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_title_type_account" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_type_movement"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_size"
+                    android:layout_marginTop="@dimen/margin_size"
+                    android:layout_marginEnd="@dimen/margin_size"
+                    android:layout_marginBottom="@dimen/margin_size"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/cl_type_account"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_concept">
+
+                    <TextView
+                        android:id="@+id/tv_title_type_movement"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/type_movement"
+                        style="@style/regular_tv"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/iv_type_movement"
+                        android:contentDescription="@string/cd_type_movement"
+                        android:layout_width="@dimen/logo_regular"
+                        android:layout_height="@dimen/logo_regular"
+                        android:layout_marginTop="@dimen/margin_size"
+                        tools:src="@drawable/ic_transfer"
+                        app:imageUrl="@{movement.typeMovementImage}"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_title_type_movement" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </com.google.android.material.card.MaterialCardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
