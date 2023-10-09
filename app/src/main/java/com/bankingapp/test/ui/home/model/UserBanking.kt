@@ -11,7 +11,7 @@ data class UserBanking(
     val bankNumber:String,
     val brandName:String,
     val dateCreated: Date,
-    val idUser:String,
+    val idUser:Long,
     val imageBrand:String,
     val typeAccountImage:String,
     val typeAccountName:String,

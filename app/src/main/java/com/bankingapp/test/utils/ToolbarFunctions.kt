@@ -1,4 +1,4 @@
-package com.bankingapp.test.ui.toolbar
+package com.bankingapp.test.utils
 
 
 //handle the different functions of toolbar

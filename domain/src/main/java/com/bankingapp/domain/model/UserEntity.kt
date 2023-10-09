@@ -6,7 +6,7 @@ import java.util.Date
 
 @Parcelize
 data class UserEntity(
-    val idUser:String ? = "",
+    val idUser:Long ? = 0,
     val name:String ? = "",
     val lastName:String ? = "",
     val age:String ? = "",

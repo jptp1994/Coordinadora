@@ -1,8 +1,6 @@
 package com.bankingapp.data.di
 
 import android.content.Context
-import com.bankingapp.data.ConstantsData.MOVEMENT
-import com.bankingapp.data.ConstantsData.USER_BANKING
 import com.bankingapp.data.firestore.home.FireStoreHome
 import com.bankingapp.data.firestore.home.FireStoreHomeFunctions
 import com.bankingapp.data.firestore.user.FireStoreUser

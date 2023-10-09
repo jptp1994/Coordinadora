@@ -6,7 +6,7 @@ import java.util.Date
 
 @Parcelize
 data class User(
-    val idUser:String,
+    var idUser:Long,
     val name:String,
     val lastName:String,
     val age:String,
@@ -14,5 +14,5 @@ data class User(
     val email:String,
     val password:String,
     val lastConnection:Date,
-    val imageUser:String
+    var imageUser:String
 ):Parcelable

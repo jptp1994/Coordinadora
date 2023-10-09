@@ -11,7 +11,7 @@ class UserMapper @Inject constructor() : Mapper<UserEntity?, User> {
 
     override fun mapFromEntity(type: UserEntity?): User {
         return User(
-            idUser = type?.idUser ?: "",
+            idUser = type?.idUser ?: 0,
             name = type?.name ?: "",
             lastName = type?.lastName ?: "",
             age = type?.age ?: "",

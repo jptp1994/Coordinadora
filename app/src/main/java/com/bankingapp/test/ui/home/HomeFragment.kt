@@ -1,5 +1,6 @@
 package com.bankingapp.test.ui.home
 
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -17,14 +18,16 @@ import com.bankingapp.test.ui.home.adapter.RowMovementAdapter
 import com.bankingapp.test.ui.home.model.HomeResponse
 import com.bankingapp.test.ui.home.viewmodel.HomeViewModel
 import com.bankingapp.test.ui.movements.model.Movement
-import com.bankingapp.test.ui.toolbar.ToolbarFunctions
+import com.bankingapp.test.utils.ToolbarFunctions
+import com.bankingapp.test.utils.dialog.DialogListener
+import com.bankingapp.test.utils.dialog.GeneralDialog.showAlertDialog
 import com.bankingapp.test.utils.extensionsfunctions.convertFormatFull
 import com.bankingapp.test.utils.extensionsfunctions.formatAmount
 import com.bankingapp.test.utils.extensionsfunctions.longSnackBar
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class HomeFragment:Fragment(), ToolbarFunctions {
+class HomeFragment:Fragment(), ToolbarFunctions, DialogListener {
 
     private lateinit var homeFragmentBinding: FragmentHomeBinding
 
@@ -58,6 +61,11 @@ class HomeFragment:Fragment(), ToolbarFunctions {
             LinearLayoutManager.VERTICAL, false
         )
         homeFragmentBinding.rvMovements.adapter = listAdapter
+
+        amount = 0.0
+
+        val cameraImageTaken= BitmapFactory.decodeFile(args?.user?.imageUser)
+        homeFragmentBinding.toolbarHome.ivProfile.setImageBitmap(cameraImageTaken)
 
         args?.user?.idUser?.let {
             homeViewModel.getData(it)
@@ -131,8 +139,21 @@ class HomeFragment:Fragment(), ToolbarFunctions {
 
     // function to logout button
     override fun clickBackFunction() {
-    //TODO: mostrar Alert Dialog si si cerrar sesion y sino ocultar
+        showAlertDialog(context=requireContext(),
+            title= getString(R.string.title_dialog_home),
+            subtitle= getString(R.string.subtitle_dialog_home),
+            okButton = getString(R.string.yes),
+            cancelButton = getString(R.string.no),
+            this)
+    }
+
+    override fun confirmButton() {
         findNavController().navigate(R.id.action_homeFragment_to_loginFragment, null, null)
+
+    }
+
+    override fun cancelButton() {
+        homeFragmentBinding.clContainer.longSnackBar(getString(R.string.close_dialog_logout))
     }
 
 

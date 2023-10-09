@@ -27,7 +27,7 @@ class HomeViewModel @Inject constructor(
 
 
     // function to get data by the id user
-    fun getData(idUser: String) = viewModelScope.launch {
+    fun getData(idUser: Long) = viewModelScope.launch {
         homeResponse.value = Response.Loading
         homeUseCases.getHomeResponse.invoke(idUser).collect { response ->
             homeResponse.value = response

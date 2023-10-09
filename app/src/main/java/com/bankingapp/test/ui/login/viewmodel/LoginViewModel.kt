@@ -10,6 +10,7 @@ import com.bankingapp.test.ui.login.mapper.UserMapper
 import com.bankingapp.test.ui.login.model.User
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import java.util.Date
 import javax.inject.Inject
 
 
@@ -27,6 +28,10 @@ class LoginViewModel @Inject constructor(
     var loginResponse = MutableLiveData<Response<UserEntity?>>(Response.Initial)
         private set
 
+    var updateConnection = MutableLiveData<Response<Boolean>>(Response.Initial)
+        private set
+
+
     //validate the user data by email and password
     fun getUser(email: String, password: String) = viewModelScope.launch {
         loginResponse.value = Response.Loading
@@ -34,6 +39,14 @@ class LoginViewModel @Inject constructor(
             loginResponse.value = response
         }
     }
+
+    fun updateConnection(idUser:Long, lastConnection: Date) = viewModelScope.launch {
+        updateConnection.value = Response.Loading
+        useCases.updateUser.invoke(idUser,lastConnection).collect { response ->
+            updateConnection.value = response
+        }
+    }
+
 
     // convert user entity to user
     fun convertData(it1: UserEntity): User {

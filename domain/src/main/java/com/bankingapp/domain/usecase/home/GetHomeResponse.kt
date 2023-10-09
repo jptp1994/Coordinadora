@@ -5,5 +5,5 @@ import com.bankingapp.domain.repository.HomeRepository
 class GetHomeResponse (
     private val repo: HomeRepository
 ) {
-    suspend operator fun invoke(idUser:String) = repo.getData(idUser)
+    suspend operator fun invoke(idUser:Long) = repo.getData(idUser)
 }

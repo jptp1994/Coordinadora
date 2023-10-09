@@ -11,11 +11,11 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.bankingapp.test.R
 import com.bankingapp.test.databinding.FragmentMovementsBinding
-import com.bankingapp.test.ui.toolbar.ToolbarFunctions
+import com.bankingapp.test.utils.ToolbarFunctions
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MovementFragment: Fragment(), ToolbarFunctions{
+class MovementFragment: Fragment(), ToolbarFunctions {
 
     private lateinit var movementPhotoBinding: FragmentMovementsBinding
 

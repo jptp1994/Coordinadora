@@ -5,7 +5,7 @@
 <data>
     <variable
         name="toolbarListener"
-        type="com.bankingapp.test.ui.toolbar.ToolbarFunctions" />
+        type="com.bankingapp.test.utils.ToolbarFunctions" />
     <variable
         name="nameUser"
         type="String" />
@@ -19,6 +19,7 @@
         android:layout_height="wrap_content">
 
         <ImageView
+            android:contentDescription="@string/cd_logout"
             android:id="@+id/iv_close_session"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -71,9 +72,10 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <ImageView
+            android:contentDescription="@string/cd_profile_image"
             android:id="@+id/iv_profile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/logo_regular"
+            android:layout_height="@dimen/logo_regular"
             android:layout_marginEnd="@dimen/margin_size"
             android:src="@drawable/ic_profile"
             app:layout_constraintBottom_toBottomOf="parent"

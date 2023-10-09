@@ -7,7 +7,7 @@ data class UserBankingMovementEntity(
     val bankNumber:String ? = null,
     val brandName: String ? = null,
     val dateCreated: Date ? = null,
-    val idUser:String ? = null,
+    val idUser:Long ? = null,
     val imageBrand:String ? = null,
     val typeAccountImage:String ? = null,
     val typeAccountName:String ? = null,

@@ -19,7 +19,7 @@ class UserBankingMapper @Inject constructor(
             bankNumber = type?.bankNumber ?: "",
             brandName = type?.brandName ?: "",
             dateCreated =  type?.dateCreated ?: Calendar.getInstance().time,
-            idUser = type?.idUser ?: "",
+            idUser = type?.idUser ?: 0,
             imageBrand =  type?.imageBrand ?: "",
             typeAccountName = type?.typeAccountName ?: "",
             typeAccountImage =  type?.typeAccountImage ?: "",

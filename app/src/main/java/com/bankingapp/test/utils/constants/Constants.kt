@@ -8,9 +8,6 @@ object Constants {
     const val errorAge = "The Age must not be null"
     const val errorDateBirth = "The Date Birth must not be null"
     const val errorPasswordField= "Invalid password should contain one uppercase letter, one lowercase letter and at least six numbers"
-    const val empty = ""
-    const val errorEmailField="Format de email invalid"
-    const val encriptionKey= "BankingApp"
-    const val methodEncription= "aes/cbc/pkcs5padding"
-    const val algorithmEncription= "aes"
+    const val errorEmailField="Format Email Invalid"
+    const val authorities= "com.bankingapp.test.fileprovider"
 }

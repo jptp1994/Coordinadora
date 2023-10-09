@@ -4,6 +4,7 @@ import com.bankingapp.domain.repository.HomeRepository
 import com.bankingapp.domain.repository.LoginRepository
 import com.bankingapp.domain.usecase.home.GetHomeResponse
 import com.bankingapp.domain.usecase.home.HomeUseCases
+import com.bankingapp.domain.usecase.login.GetLastUser
 import com.bankingapp.domain.usecase.register.AddUser
 import com.bankingapp.domain.usecase.login.GetUser
 import com.bankingapp.domain.usecase.login.LoginUseCases
@@ -24,6 +25,7 @@ object DomainModule {
     ) = LoginUseCases(
         getUser = GetUser(repo),
         addUser = AddUser(repo),
+        getLastUser = GetLastUser(repo),
         updateUser = UpdateUser(repo)
     )
 

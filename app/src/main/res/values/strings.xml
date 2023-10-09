@@ -27,14 +27,6 @@
     <string name="content_back">Back</string>
     <string name="last_connection_text"><b>Last Connection:</b> %s</string>
 
-    <!--Hints-->
-    <string name="hint_user_name_login">test.com</string>
-    <string name="hint_pin_login">Type Your Pin</string>
-    <string name="hint_user">name of user</string>
-    <string name="hint_last_name">Last Name</string>
-    <string name="hint_email">test.com</string>
-    <string name="hint_password">Type Your Pin</string>
-
     <!--Title for toolbar-->
     <string name="title_toolbar_movement">Movement</string>
     <string name="title_toolbar_register_form">Register Form\n</string>
@@ -53,6 +45,9 @@
     <string name="cd_company">Company Bank</string>
     <string name="cd_type_account">Type Account</string>
     <string name="cd_type_movement">Type Movement</string>
+    <string name="cd_logout">Logout</string>
+    <string name="cd_profile_image">Image Profile</string>
+    <string name="cd_profile">Profile Picture</string>
 
     <!--Register Photo Screen -->
     <string name="add_photo">Add Photo</string>
@@ -72,6 +67,17 @@
     <!--Error Messages-->
     <string name="no_movements_error">No movements available</string>
     <string name="credentials_incorrect">Credentials Incorrect</string>
+    <string name="error_permissions_camera_denied">You must set the permissions of camera manual</string>
+    <string name="no_permissions_camera">No Permissions in camera</string>
+    <string name="error_no_photo">You must upload your photo before finish the register</string>
+
+    <!--Dialog Home-->
+    <string name="title_dialog_home"> Are you sure to logout?</string>
+    <string name="subtitle_dialog_home">If is positive click on yes otherwise click no</string>
+    <string name="yes">yes</string>
+    <string name="no">no</string>
+    <string name="close_dialog_logout">The dialog has been closed</string>
+
 
 
 </resources>

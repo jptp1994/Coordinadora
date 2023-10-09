@@ -4,12 +4,9 @@ import com.bankingapp.domain.model.HomeResponseEntity
 import com.bankingapp.domain.model.MovementEntity
 import com.bankingapp.domain.model.Response
 import com.bankingapp.domain.model.UserBankingEntity
-import com.bankingapp.domain.model.UserBankingMovementEntity
-import com.bankingapp.domain.model.UserEntity
 import com.bankingapp.domain.util.createUserBankingMovementEntity
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.tasks.await
-import java.util.Date
 import javax.inject.Inject
 
 class FireStoreHome @Inject constructor(
@@ -18,8 +15,9 @@ class FireStoreHome @Inject constructor(
     private var homeResponseEntity: HomeResponseEntity = HomeResponseEntity(
         bankingList = arrayListOf()
     )
-    override suspend fun getData(idUser: String): Response<HomeResponseEntity?> {
+    override suspend fun getData(idUser: Long): Response<HomeResponseEntity?> {
         return try {
+            homeResponseEntity.bankingList?.clear()
             val dataBanking = db.collection("user_banking").whereEqualTo("idUser", idUser).get().await()
             val userBankingList = dataBanking.toObjects(UserBankingEntity::class.java)
             userBankingList.forEach { userBanking ->
@@ -34,5 +32,4 @@ class FireStoreHome @Inject constructor(
             Response.Failure(e)
         }
     }
-
 }

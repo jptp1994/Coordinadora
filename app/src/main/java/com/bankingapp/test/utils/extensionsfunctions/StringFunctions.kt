@@ -17,6 +17,9 @@ internal fun String.validatePassword(): Boolean {
             && this.length >=5)
 }
 
+//Validate if the field is empty
+internal fun String.isEmptyField():Boolean = this.isEmpty()
+
 //This let to show enmascarated the bankNumber
 internal fun String.hideCharacters():String = this.replaceRange(IntRange(0,this.length-4),"*")
 

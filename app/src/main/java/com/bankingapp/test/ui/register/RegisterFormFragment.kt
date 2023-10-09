@@ -1,39 +1,39 @@
 package com.bankingapp.test.ui.register
 
-import android.app.DatePickerDialog
-import android.app.TimePickerDialog
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.bankingapp.test.R
 import com.bankingapp.test.databinding.FragmentRegisterFormBinding
-import com.bankingapp.test.ui.login.model.User
 import com.bankingapp.test.ui.register.listener.RegisterFormListener
-import com.bankingapp.test.ui.register.viewmodel.RegisterViewModel
-import com.bankingapp.test.ui.toolbar.ToolbarFunctions
+import com.bankingapp.test.ui.register.util.RegisterUtils
+import com.bankingapp.test.utils.ToolbarFunctions
+import com.bankingapp.test.utils.calendar.CalendarListener
+import com.bankingapp.test.utils.calendar.CalendarUtils.pickDateTime
 import com.bankingapp.test.utils.constants.Constants
-import com.bankingapp.test.utils.extensionsfunctions.convertFormatFull
-import com.google.android.material.snackbar.Snackbar
+import com.bankingapp.test.utils.extensionsfunctions.isEmptyField
+import com.bankingapp.test.utils.extensionsfunctions.isValidEmail
+import com.bankingapp.test.utils.extensionsfunctions.longSnackBar
+import com.bankingapp.test.utils.extensionsfunctions.validatePassword
 import dagger.hilt.android.AndroidEntryPoint
-import java.util.Calendar
 import java.util.Date
 
 
 // Add listener for buttons in elements and toolbar
 @AndroidEntryPoint
-class RegisterFormFragment:Fragment(), RegisterFormListener, ToolbarFunctions {
+class RegisterFormFragment:Fragment(), RegisterFormListener, ToolbarFunctions, CalendarListener {
 
     // Date variable to set calendar and binding
     private lateinit var dateBirth: Date
     private lateinit var registerFormBinding: FragmentRegisterFormBinding
 
-    private val registerViewModel by viewModels<RegisterViewModel>()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -42,72 +42,49 @@ class RegisterFormFragment:Fragment(), RegisterFormListener, ToolbarFunctions {
         registerFormBinding= DataBindingUtil.inflate(inflater, R.layout.fragment_register_form, container, false)
         registerFormBinding.clickHandler = this
         registerFormBinding.toolbarListener = this
-        registerFormBinding.viewModel = registerViewModel
         registerFormBinding.titleToolbar = getString(R.string.title_toolbar_register_photo)
 
-        registerFormBinding.toolbar.back.setColorFilter(ContextCompat.getColor(requireContext(), R.color.white), android.graphics.PorterDuff.Mode.SRC_IN);
+        registerFormBinding.toolbar.back.setColorFilter(ContextCompat.getColor(requireContext(), R.color.white), android.graphics.PorterDuff.Mode.SRC_IN)
         registerFormBinding.toolbar.titleToolbar.setTextColor(
             ContextCompat.getColor(requireContext(),R.color.white))
 
-        subscribeUi()
+        setupListeners()
         return registerFormBinding.root
 
     }
 
-
-
-    //Method to set error fields
-    private fun subscribeUi() = with(registerFormBinding){
-        registerViewModel.firstNameValidText.observe(viewLifecycleOwner){
-            tiName.error= it
-        }
-        registerViewModel.lastNameValidText.observe(viewLifecycleOwner){
-            tiLastName.error = it
-        }
-        registerViewModel.ageNameValidText.observe(viewLifecycleOwner){
-            tiAge.error= it
-        }
-        registerViewModel.emailValidText.observe(viewLifecycleOwner) {
-            tiEmail.error = it
-        }
-        registerViewModel.passwordValidText.observe(viewLifecycleOwner) {
-            tiPassword.error = it
-        }
+    private fun setupListeners() = with(registerFormBinding) {
+        edName.addTextChangedListener(TextFieldValidation(edName))
+        edLastName.addTextChangedListener(TextFieldValidation(edLastName))
+        edDateBirth.addTextChangedListener(TextFieldValidation(edDateBirth))
+        edAge.addTextChangedListener(TextFieldValidation(edAge))
+        edEmail.addTextChangedListener(TextFieldValidation(edEmail))
+        edCurrentPassword.addTextChangedListener(TextFieldValidation(edCurrentPassword))
     }
 
-
-    //TODO: validar para migrar calendario a una funcion externa
+    //Open Calendar
     override fun clickOpenCalendar() {
-        pickDateTime()
+        pickDateTime(this, requireContext())
     }
-
 
     // Click accept button
     override fun clickAcceptButton() = with(registerFormBinding) {
-        //TODO: validar para mejorar validacion
-        if (edName.error.isNullOrEmpty() &&
-            edLastName.error.isNullOrEmpty() && edAge.error.isNullOrEmpty() && edDateBirth.text.toString().isNotEmpty()
+        if (edName.error.isNullOrEmpty() && edLastName.error.isNullOrEmpty() &&
+            edAge.error.isNullOrEmpty() && edDateBirth.text.toString().isNotEmpty()
             && edEmail.error.isNullOrEmpty()&& edCurrentPassword.error.isNullOrEmpty()) {
             val directions =
                 RegisterFormFragmentDirections.actionRegisterFragmentToRegisterPhotoFragment(
-                    User(
-                        idUser = "",
-                        name = edName.text.toString(),
-                        lastName = edLastName.text.toString(),
-                        age = edAge.text.toString(),
-                        email = edEmail.text.toString(),
-                        password = edCurrentPassword.text.toString(),
-                        dateBirth = dateBirth,
-                        lastConnection = Calendar.getInstance().time,
-                        imageUser = ""
-                    )
+                    RegisterUtils.createUserModel(
+                        name= edName.text.toString(),
+                        lastName= edLastName.text.toString(),
+                        age= edAge.text.toString(),
+                        email= edEmail.text.toString(),
+                        password= edCurrentPassword.text.toString(),
+                        dateBirth= dateBirth)
                 )
-
-            //TODO: validate fields and create material date picker dialog to finish the flow
             findNavController().navigate(directions)
         } else{
-            //TODO: crear extension para snackbar
-            Snackbar.make(materialCardView, Constants.errorBtnRegister, Snackbar.LENGTH_LONG).show()
+           materialCardView.longSnackBar(Constants.errorBtnRegister)
         }
     }
 
@@ -116,30 +93,74 @@ class RegisterFormFragment:Fragment(), RegisterFormListener, ToolbarFunctions {
         findNavController().popBackStack()
     }
 
-    //Open calendar
-    private fun pickDateTime(){
-        val currentDateTime = Calendar.getInstance()
-        val startYear = currentDateTime.get(Calendar.YEAR)
-        val startMonth = currentDateTime.get(Calendar.MONTH)
-        val startDay = currentDateTime.get(Calendar.DAY_OF_MONTH)
-        val startHour = currentDateTime.get(Calendar.HOUR_OF_DAY)
-        val startMinute = currentDateTime.get(Calendar.MINUTE)
+    /**
+     * applying text watcher on each text field
+     */
+    inner class TextFieldValidation(private val view: View) : TextWatcher {
+        override fun afterTextChanged(s: Editable?) {}
+        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) =
+            with(registerFormBinding) {
+                // checking ids of each text field and applying functions accordingly.
+                when (view.id) {
+                    R.id.ed_name -> {
+                        edName.error = if (edName.text.toString().isEmptyField()){
+                           Constants.errorFirstName
+                        } else{
+                         null
+                        }
+                    }
+                    R.id.ed_lastName -> {
+                        edLastName.error =
+                            if (edLastName.text.toString().isEmptyField()){
+                                Constants.errorLastName
+                            } else{
+                                null
+                            }
+                    }
 
-        DatePickerDialog(requireContext(), { _, year, month, day ->
-            TimePickerDialog(
-                requireContext(),
-                { _, hour, minute ->
-                    val pickedDateTime = Calendar.getInstance()
-                    pickedDateTime.set(year, month, day, hour, minute)
-                    registerFormBinding.edDateBirth.setText(pickedDateTime.time.convertFormatFull())
-                    dateBirth = pickedDateTime.time
-                },
-                startHour,
-                startMinute,
-                false
-            ).show()
-        }, startYear, startMonth, startDay)
-            .show()
+                    R.id.ed_age -> {
+                        edAge.error =
+                            if (edAge.text.toString().isEmptyField()){
+                                Constants.errorAge
+                            } else{
+                                null
+                            }
+                    }
+
+                    R.id.ed_dateBirth -> {
+                        edDateBirth.error =
+                            if (edDateBirth.text.toString().isEmptyField()){
+                                Constants.errorDateBirth
+                            } else{
+                                null
+                            }
+                    }
+
+                    R.id.ed_email -> {
+                        edEmail.error =
+                            if (!edEmail.text.toString().isValidEmail()){
+                                Constants.errorEmailField
+                            } else{
+                                null
+                            }
+                    }
+
+                    R.id.ed_current_password -> {
+                        edCurrentPassword.error =
+                            if (!edCurrentPassword.text.toString().validatePassword()){
+                                Constants.errorPasswordField
+                            } else{
+                                null
+                            }
+                    }
+                }
+            }
+    }
+
+    override fun setDate(convertFormatFull: String, time: Date) {
+        registerFormBinding.edDateBirth.setText(convertFormatFull)
+        dateBirth = time
     }
 
 }
