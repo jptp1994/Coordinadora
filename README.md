@@ -22,7 +22,7 @@ Below you can find the docs for each tehnology that is used in this app:
 * [Dynamic adding components libraries][11]
 
 ## Other Android Components:
-* Modular proyect with clean architecture
+* [Modular proyect with clean architecture][12]
 
 * This is not an officially supported Google product.
 
@@ -36,4 +36,5 @@ Below you can find the docs for each tehnology that is used in this app:
 [8]: https://kotlinlang.org/docs/flow.html
 [9]: https://medium.com/firebase-tips-tricks/how-to-make-a-clean-architecture-android-app-using-mvvm-firestore-and-jetpack-compose-abdb5e02a2d8
 [10]: https://firebase.google.com/docs/android/setup
-[11]: https://firebase.google.com/docs/android/setup
+[11]: https://www.youtube.com/watch?v=w5qCmvS9JGE
+[12]: https://ahmad-efati.medium.com/modularization-of-android-applications-based-on-clean-architecture-18dc643e0562
