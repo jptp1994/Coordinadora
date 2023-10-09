@@ -19,7 +19,7 @@ Below you can find the docs for each tehnology that is used in this app:
 
 ## Gradle DSL
 
-Dynamic adding components libraries
+[Dynamic adding components libraries][11]
 
 ## Other Android Components:
 * Modular proyect with clean architecture
@@ -36,4 +36,4 @@ Dynamic adding components libraries
 [8]: https://kotlinlang.org/docs/flow.html
 [9]: https://medium.com/firebase-tips-tricks/how-to-make-a-clean-architecture-android-app-using-mvvm-firestore-and-jetpack-compose-abdb5e02a2d8
 [10]: https://firebase.google.com/docs/android/setup
-
+[11]: https://firebase.google.com/docs/android/setup
