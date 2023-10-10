@@ -19,4 +19,5 @@
     <dimen name="movement_size">20sp</dimen>
     <dimen name="register_size_tv">20sp</dimen>
     <dimen name="photo_size">260dp</dimen>
+    <dimen name="logo_regular_extra">64dp</dimen>
 </resources>

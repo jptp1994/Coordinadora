@@ -74,8 +74,8 @@
         <ImageView
             android:contentDescription="@string/cd_profile_image"
             android:id="@+id/iv_profile"
-            android:layout_width="@dimen/logo_regular"
-            android:layout_height="@dimen/logo_regular"
+            android:layout_width="@dimen/logo_regular_extra"
+            android:layout_height="@dimen/logo_regular_extra"
             android:layout_marginEnd="@dimen/margin_size"
             android:src="@drawable/ic_profile"
             app:layout_constraintBottom_toBottomOf="parent"
