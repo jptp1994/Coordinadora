@@ -110,7 +110,7 @@ class HomeFragment:Fragment(), ToolbarFunctions, DialogListener {
                                 }
                         }
                         // set the amount of balance
-                        homeFragmentBinding.amount = amount.formatAmount()
+                        homeFragmentBinding.amount = "$${amount.formatAmount()}"
                         //send the list of movements
                         listAdapter.submitList(movementList)
                     }?: homeFragmentBinding.clContainer.longSnackBar(getString(R.string.no_movements_error))
