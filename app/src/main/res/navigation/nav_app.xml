@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.bankingapp.test.ui.login.LoginFragment"
+        android:name="com.coordinadora.test.ui.login.LoginFragment"
         android:label="@string/app_name"
         tools:layout="@layout/fragment_login">
         <action
@@ -18,7 +18,7 @@
             app:popUpToInclusive="true">
             <argument
                 android:name="user"
-                app:argType="com.bankingapp.test.ui.login.model.User" />
+                app:argType="com.coordinadora.test.ui.login.model.User" />
         </action>
         <action
             android:id="@+id/action_loginFragment_to_register"
@@ -28,20 +28,20 @@
     <fragment
         android:id="@+id/homeFragment"
         tools:layout="@layout/fragment_home"
-        android:name="com.bankingapp.test.ui.home.HomeFragment"
+        android:name="com.coordinadora.test.ui.home.HomeFragment"
         android:label="@string/home_fragment">
         <argument
             android:name="user"
-            app:argType="com.bankingapp.test.ui.login.model.User" />
+            app:argType="com.coordinadora.test.ui.login.model.User" />
         <action
             android:id="@+id/home_to_movements"
             app:destination="@id/movements">
             <argument
                 android:name="movement"
-                app:argType="com.bankingapp.test.ui.movements.model.Movement" />
+                app:argType="com.coordinadora.test.ui.movements.model.Movement" />
             <argument
                 android:name="userBanking"
-                app:argType="com.bankingapp.test.ui.home.model.UserBanking" />
+                app:argType="com.coordinadora.test.ui.home.model.UserBanking" />
         </action>
         <action
             android:id="@+id/action_homeFragment_to_loginFragment"
@@ -51,31 +51,31 @@
     <fragment
         android:id="@+id/registerFragment"
         tools:layout="@layout/fragment_register_form"
-        android:name="com.bankingapp.test.ui.register.RegisterFormFragment"
+        android:name="com.coordinadora.test.ui.register.RegisterFormFragment"
         android:label="@string/register_fragment" >
         <action
             android:id="@+id/action_registerFragment_to_registerPhotoFragment"
             app:destination="@id/registerPhotoFragment">
             <argument
                 android:name="user"
-                app:argType="com.bankingapp.test.ui.login.model.User" />
+                app:argType="com.coordinadora.test.ui.login.model.User" />
         </action>
     </fragment>
 
     <fragment
         android:id="@+id/registerPhotoFragment"
         tools:layout="@layout/fragment_register_photo"
-        android:name="com.bankingapp.test.ui.register.RegisterPhotoFragment"
+        android:name="com.coordinadora.test.ui.register.RegisterPhotoFragment"
         android:label="@string/register_photo_fragment" >
         <argument
             android:name="user"
-            app:argType="com.bankingapp.test.ui.login.model.User" />
+            app:argType="com.coordinadora.test.ui.login.model.User" />
         <action
             android:id="@+id/action_registerPhotoFragment_to_homeFragment"
             app:destination="@id/homeFragment">
             <argument
                 android:name="user"
-                app:argType="com.bankingapp.test.ui.login.model.User" />
+                app:argType="com.coordinadora.test.ui.login.model.User" />
         </action>
     </fragment>
 
@@ -83,13 +83,13 @@
     <fragment
         android:id="@+id/movements"
         tools:layout="@layout/fragment_movements"
-        android:name="com.bankingapp.test.ui.movements.MovementFragment"
+        android:name="com.coordinadora.test.ui.movements.MovementFragment"
         android:label="@string/movement_fragment">
         <argument
             android:name="movement"
-            app:argType="com.bankingapp.test.ui.movements.model.Movement" />
+            app:argType="com.coordinadora.test.ui.movements.model.Movement" />
         <argument
             android:name="userBanking"
-            app:argType="com.bankingapp.test.ui.home.model.UserBanking" />
+            app:argType="com.coordinadora.test.ui.home.model.UserBanking" />
     </fragment>
    </navigation>

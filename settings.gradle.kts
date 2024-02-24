@@ -13,7 +13,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Banking App"
+rootProject.name = "Coordinadora App"
 include(":app")
 include(":data")
 include(":domain")

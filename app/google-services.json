@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "873458218189",
-    "project_id": "banking-app-af5de",
-    "storage_bucket": "banking-app-af5de.appspot.com"
+    "project_number": "310675757475",
+    "project_id": "candidato-jean-pierre",
+    "storage_bucket": "candidato-jean-pierre.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:873458218189:android:bba24d9eaa8c767ec22584",
+        "mobilesdk_app_id": "1:310675757475:android:a055e09e4ff2f0fa14a216",
         "android_client_info": {
-          "package_name": "com.bankingapp.test"
+          "package_name": "com.coordinadora.test"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAMAu4f2xn83RTg7FzyaJBLwHCz7hBv8G4"
+          "current_key": "AIzaSyBlnXj2TuQwbMHMHoaop4JIZD70TNw41dc"
         }
       ],
       "services": {

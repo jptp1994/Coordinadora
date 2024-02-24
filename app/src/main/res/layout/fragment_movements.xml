@@ -5,24 +5,24 @@
     <data>
         <import
             alias="ExtensionFunctionsString"
-            type="com.bankingapp.test.utils.extensionsfunctions.StringFunctionsKt" />
+            type="com.coordinadora.test.utils.extensionsfunctions.StringFunctionsKt" />
         <import
             alias="ExtensionFunctionsDate"
-            type="com.bankingapp.test.utils.extensionsfunctions.DateFunctionsKt" />
+            type="com.coordinadora.test.utils.extensionsfunctions.DateFunctionsKt" />
         <import
             alias="ExtensionFunctionsDouble"
-            type="com.bankingapp.test.utils.extensionsfunctions.DoubleExtensionsKt" />
+            type="com.coordinadora.test.utils.extensionsfunctions.DoubleExtensionsKt" />
         <variable
             name="toolbarListener"
-            type="com.bankingapp.test.utils.ToolbarFunctions" />
+            type="com.coordinadora.test.utils.ToolbarFunctions" />
 
         <variable
             name="movement"
-            type="com.bankingapp.test.ui.movements.model.Movement" />
+            type="com.coordinadora.test.ui.movements.model.Movement" />
 
         <variable
             name="userBanking"
-            type="com.bankingapp.test.ui.home.model.UserBanking" />
+            type="com.coordinadora.test.ui.home.model.UserBanking" />
 
         <variable
             name="titleToolbar"

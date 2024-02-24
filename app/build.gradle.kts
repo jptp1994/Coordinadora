@@ -22,9 +22,7 @@ android {
         versionName = Versions.versionName
 
         testInstrumentationRunner = Config.testRunner
-        /*vectorDrawables {
-            useSupportLibrary = true
-        }*/
+
     }
 
     buildTypes {

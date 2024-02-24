@@ -5,7 +5,7 @@
 <data>
     <variable
         name="toolbarListener"
-        type="com.bankingapp.test.utils.ToolbarFunctions" />
+        type="com.coordinadora.test.utils.ToolbarFunctions" />
 
     <variable
         name="titleToolbar"
@@ -15,7 +15,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@android:color/transparent"
-    tools:context=".MainActivity">
+    tools:context="com.coordinadora.test.MainActivity">
 
     <ImageView
         android:id="@+id/back"

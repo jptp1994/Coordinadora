@@ -1,5 +1,5 @@
-# Banking App Test
-Banking App Test is an app built with [Kotlin][1] and [Cloud Firestore][2] that displays data in real-time using [Android Architecture Components][3] and the MVVM Architecture Pattern. For the UI it uses material design components and navigation safe args to pass the data between the screens, Android's modern toolkit for building native UI.
+# Coordinadora App Test
+Coordinadora App Test is an app built with [Kotlin][1] and [Cloud Firestore][2] that displays data in real-time using [Android Architecture Components][3] and the MVVM Architecture Pattern. For the UI it uses material design components and navigation safe args to pass the data between the screens, Android's modern toolkit for building native UI.
 
 Below you can find the docs for each tehnology that is used in this app:
 
